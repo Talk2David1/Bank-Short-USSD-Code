@@ -1,0 +1,84 @@
+<script>
+// Declare a global variable for the account balance
+var accountBalance = 10000; // Assuming the account balance is $10000
+
+// Prompt the user to enter their PIN
+var pin = prompt("Welcome to Bank KOK. Dial *666# to Begin:");
+
+// Check if the entered PIN is correct
+if (pin === "*666#") {
+  // Prompt the user to select an option
+  var option = prompt("Select an option:\n1. Money Transfer\n2. Airtime Recharge\n3. Data Recharge");
+
+  // Perform the selected option
+  if (option === "1") {
+    // Prompt the user to enter the account number
+    var accountNumber = prompt("Enter the account number:");
+
+    // Prompt the user to enter the amount to transfer
+    var transferAmount = parseFloat(prompt("Enter the amount to transfer:"));
+
+    // Check if the transfer amount is less than the account balance
+    if (transferAmount <= accountBalance) {
+      // Code for money transfer
+      alert("Transfer successful. Amount transferred: $" + transferAmount);
+
+      // Update the account balance
+      accountBalance -= transferAmount;
+    } else {
+      alert("Insufficient funds. Transfer amount exceeds account balance.");
+    }
+  } else if (option === "2") {
+    // Prompt the user to enter the amount to recharge
+    var rechargeAmount = parseFloat(prompt("Enter the amount to recharge:"));
+
+    // Prompt the user to enter the phone number
+    var phoneNumber = prompt("Enter the phone number:");
+
+    // Check if the recharge amount is less than the account balance
+    if (rechargeAmount <= accountBalance) {
+      // Code for airtime recharge
+      alert("Recharge successful. Amount recharged: $" + rechargeAmount + ". Phone number: " + phoneNumber);
+
+      // Update the account balance
+      accountBalance -= rechargeAmount;
+    } else {
+      alert("Insufficient funds. Recharge amount exceeds account balance.");
+    }
+  } else if (option === "3") {
+    // Prompt the user to choose a network
+    var network = prompt("Choose a network:\n1. MTN\n2. Airtel\n3. Etisalat");
+
+    // Prompt the user to choose a data plan
+    var dataPlan = prompt("Choose a data plan:\n1. 1Gb for $1000\n2. 5Gb for $5000\n3. 10Gb for $10000");
+
+    // Prompt the user to enter the phone number
+    var phoneNumber = prompt("Enter the phone number:");
+
+    // Check if the recharge amount is less than the account balance
+    var rechargeAmount;
+    if (dataPlan === "1") {
+      rechargeAmount = 1000;
+    } else if (dataPlan === "2") {
+      rechargeAmount = 5000;
+    } else if (dataPlan === "3") {
+      rechargeAmount = 10000;
+    } else {
+      alert("Invalid data plan selected.");
+    }
+    if (rechargeAmount <= accountBalance) {
+      // Code for data recharge
+      alert("Data plan subscribed successfully to: "  + phoneNumber);
+
+      // Update the account balance
+      accountBalance -= rechargeAmount;
+    } else {
+      alert("Insufficient funds. Recharge amount exceeds account balance.");
+    }
+  } else {
+    alert("Invalid option selected.");
+  }
+} else {
+  alert("Incorrect PIN. Please try again.");
+}
+</script>
