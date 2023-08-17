@@ -1,0 +1,162 @@
+<script>
+    // Declare a global variable for the account balance
+    var accountBalance = 10000; // Assuming the account balance is $10000
+    var confirmationCode = "1996"; // Four-digit confirmation code
+  
+    // Prompt the user to enter their PIN
+    var pin = prompt("Welcome to Bank KOK. Dial 666 to Begin:");
+  
+    // Check if the entered PIN is correct
+    if (pin === "666") {
+      // Prompt the user to select an option
+      var option = prompt(
+        "Select an option:\n1. Money Transfer\n2. Airtime Recharge\n3. Data Recharge\n4. Check Account Balance"
+      );
+  
+      // Perform the selected option
+      if (option === "1") {
+        // Prompt the user to select if they are transferring to the same bank or to other banks
+        var sameBank = prompt(
+          "Are you transferring to the\n1. Same bank\n2. Other Banks"
+        );
+  
+        if (sameBank === "1") {
+          // Prompt the user to enter the account number
+          var accountNumber = prompt("Enter the account number:");
+  
+          // Prompt the user to enter the amount to transfer
+          var transferAmount = parseFloat(prompt("Enter the amount to transfer:"));
+  
+          // Check if the transfer amount is less than or equal to the account balance
+          if (transferAmount <= accountBalance) {
+            // Prompt the user to input the confirmation code
+            var inputCode = prompt(
+              "You are about to transfer $" +
+                transferAmount +
+                " to " +
+                accountNumber +
+                ".\nInput your four-digit code to confirm:"
+            );
+  
+            // Check if the confirmation code is correct
+            if (inputCode === confirmationCode) {
+              // Code for money transfer
+              accountBalance -= transferAmount;
+              alert(
+                "Transfer successful. Amount transferred: $" +
+                  transferAmount +
+                  ".\nAccount balance: $" +
+                  accountBalance
+              );
+            } else {
+              alert("Transfer canceled. Please check your confirmation code.");
+            }
+          } else {
+            alert("Insufficient balance.");
+          }
+        } else if (sameBank === "2") {
+          // Prompt the user to select a bank
+          var bank = prompt(
+            "Select a bank:\n1. Access Bank\n2. First Bank\n3. GT Bank\n4. Zenith Bank"
+          );
+  
+          // Prompt the user to enter the account number
+          var accountNumber = prompt("Enter the account number:");
+  
+          // Prompt the user to enter the amount to transfer
+          var transferAmount = parseFloat(prompt("Enter the amount to transfer:"));
+  
+          // Check if the transfer amount is less than or equal to the account balance
+          if (transferAmount <= accountBalance) {
+            // Prompt the user to input the confirmation code
+            var inputCode = prompt(
+              "You are about to transfer $" +
+                transferAmount +
+                " to " +
+                accountNumber +
+                ".\nInput your four-digit code to confirm:"
+            );
+  
+            // Check if the confirmation code is correct
+            if (inputCode === confirmationCode) {
+              // Code for money transfer
+              accountBalance -= transferAmount;
+              alert(
+                "Transfer successful. Amount transferred: $" +
+                  transferAmount +
+                  ".\nAccount balance: $" +
+                  accountBalance
+              );
+            } else {
+              alert("Transfer canceled. Please check your confirmation code.");
+            }
+          } else {
+            alert("Insufficient balance.");
+          }
+        } else {
+          alert("Invalid option selected.");
+        }
+      } else if (option === "2") {
+        // Prompt the user to enter the amount to recharge
+        var rechargeAmount = parseFloat(prompt("Enter the amount to recharge:"));
+  
+        // Prompt the user to enter the phone number
+        var phoneNumber = prompt("Enter the phone number:");
+  
+        // Check if the recharge amount is less than the account balance
+        if (rechargeAmount <= accountBalance) {
+          // Code for airtime recharge
+          alert(
+            "Recharge successful. Amount recharged: $" +
+              rechargeAmount +
+              ". Phone number: " +
+              phoneNumber
+          );
+  
+          // Update the account balance
+          accountBalance -= rechargeAmount;
+        } else {
+          alert("Insufficient funds. Recharge amount exceeds account balance.");
+        }
+      } else if (option === "3") {
+        // Prompt the user to choose a network
+        var network = prompt("Choose a network:\n1. MTN\n2. Airtel\n3. Etisalat");
+  
+        // Prompt the user to choose a data plan
+        var dataPlan = prompt(
+          "Choose a data plan:\n1. 1Gb for $1000\n2. 5Gb for $5000\n3. 10Gb for $10000"
+        );
+  
+        // Prompt the user to enter the phone number
+        var phoneNumber = prompt("Enter the phone number:");
+  
+        // Check if the recharge amount is less than the account balance
+        var rechargeAmount;
+        if (dataPlan === "1") {
+          rechargeAmount = 1000;
+        } else if (dataPlan === "2") {
+          rechargeAmount = 5000;
+        } else if (dataPlan === "3") {
+          rechargeAmount = 10000;
+        } else {
+          alert("Invalid data plan selected.");
+        }
+        if (rechargeAmount <= accountBalance) {
+          // Code for data recharge
+          alert("Data plan subscribed successfully to: " + phoneNumber);
+  
+          // Update the account balance
+          accountBalance -= rechargeAmount;
+        } else {
+          alert("Insufficient funds. Recharge amount exceeds account balance.");
+        }
+      } else if (option === "4") {
+        // Display the current account balance
+        alert("Your current account balance is: $" + accountBalance);
+      } else {
+        alert("Invalid option selected.");
+      }
+    } else {
+      alert("Incorrect PIN. Please try again.");
+    }
+  </script>
