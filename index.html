@@ -4,10 +4,10 @@
   var confirmationCode = "1996"; // Four-digit confirmation code
 
   // Prompt the user to enter their PIN
-  var pin = prompt("Welcome to Bank KOK. Dial *666# to Begin:");
+  var pin = prompt("Welcome to Bank KOK. Dial 666 to Begin:");
 
   // Check if the entered PIN is correct
-  if (pin === "*666#") {
+  if (pin === "666") {
     // Prompt the user to select an option
     var option = prompt(
       "Select an option:\n1. Money Transfer\n2. Airtime Recharge\n3. Data Recharge\n4. Check Account Balance"
@@ -35,7 +35,7 @@
               transferAmount +
               " to " +
               accountNumber +
-              ".\nInput your four-digit code to confirm:"
+              ".\nInput your four-digit code to confirm: \n //code is 1996"
           );
 
           // Check if the confirmation code is correct
@@ -96,28 +96,46 @@
       } else {
         alert("Invalid option selected.");
       }
+      //End of transfer prompt
+
     } else if (option === "2") {
+      var rechargeOption = prompt(
+          "Select recharge option:\n1. Recharge to Self\n2. Recharge to Others"
+        );
       // Prompt the user to enter the amount to recharge
+      if (rechargeOption === "1") {
       var rechargeAmount = parseFloat(prompt("Enter the amount to recharge:"));
 
-      // Prompt the user to enter the phone number
-      var phoneNumber = prompt("Enter the phone number:");
-
-      // Check if the recharge amount is less than the account balance
       if (rechargeAmount <= accountBalance) {
-        // Code for airtime recharge
-        alert(
-          "Recharge successful. Amount recharged: $" +
-            rechargeAmount +
-            ". Phone number: " +
-            phoneNumber
-        );
-
-        // Update the account balance
-        accountBalance -= rechargeAmount;
-      } else {
-        alert("Insufficient funds. Recharge amount exceeds account balance.");
-      }
+        if (rechargeAmount <= accountBalance) {
+                alert("Recharge of " + rechargeAmount + " was successful" );
+                    
+          }
+          else {
+            alert("Insufficient funds. Recharge amount exceeds account balance.");
+          }
+        }  else if (rechargeOption === "2") {
+          var networkType = prompt(
+            "Select network type:\n1. MTN\n2. Airtel\n3. Etisalat\n4. Glo"
+          );
+          if (networkType === "1" || networkType === "2" || networkType === "3" || networkType === "4") {
+            var rechargeAmount = parseFloat(prompt("Enter the amount to recharge:"));
+            var recieverPhoneNumber = parseFloat(prompt("Enter the receiver's phone number:"));
+            if (rechargeAmount <= accountBalance) {
+                alert("Recharge of " + rechargeAmount + " to " + recieverPhoneNumber + " was successful" );
+              // Airtime recharge for others logic...
+            } else {
+              alert("Insufficient funds. Recharge amount exceeds account balance.");
+            }
+          } else {
+            alert("Invalid network type selected.");
+          }
+        } else {
+          alert("Invalid recharge option selected.");
+        } 
+        
+      //end of phone recharge  
+          
     } else if (option === "3") {
       // Prompt the user to choose a network
       var network = prompt("Choose a network:\n1. MTN\n2. Airtel\n3. Etisalat");
@@ -159,4 +177,5 @@
   } else {
     alert("Incorrect PIN. Please try again.");
   }
+}
 </script>
